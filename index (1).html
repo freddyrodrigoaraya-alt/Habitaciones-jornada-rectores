@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Consulta de habitaciones | Jornada de Rectores 2026</title>
+  <style>
+    :root {
+      --rojo-salesiano: #bd0808;
+      --rojo-profundo: #8f0505;
+      --negro: #202020;
+      --gris: #606060;
+      --rosa-fondo: #fff7f6;
+      --borde: #ead7d5;
+      --blanco: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--negro);
+      background: linear-gradient(145deg, #ffffff 0%, var(--rosa-fondo) 55%, #f4e8e7 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px 16px;
+    }
+    main {
+      width: min(100%, 700px);
+      background: rgba(255, 255, 255, .96);
+      border: 1px solid var(--borde);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(90, 25, 25, .14);
+    }
+    header {
+      min-height: 230px;
+      padding: 28px;
+      color: var(--blanco);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background:
+        linear-gradient(90deg, rgba(33, 20, 20, .88), rgba(60, 35, 35, .48)),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Don_Bosco.jpg/1280px-Don_Bosco.jpg') center 24% / cover;
+    }
+    .pretitulo {
+      margin: 0 0 7px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 560px;
+      margin: 0;
+      color: var(--blanco);
+      font-size: clamp(2.1rem, 7.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: .88;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+    h1 span { color: #f02d2d; }
+    .anio {
+      margin: 9px 0 0;
+      font-size: clamp(1.25rem, 4vw, 2.05rem);
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .contenido { padding: 30px 28px; }
+    label { display: block; margin-bottom: 9px; font-weight: 700; }
+    input {
+      width: 100%;
+      padding: 15px 16px;
+      border: 2px solid #d9c5c3;
+      border-radius: 4px;
+      color: var(--negro);
+      font: inherit;
+      font-size: 1rem;
+      outline: none;
+    }
+    input:focus {
+      border-color: var(--rojo-salesiano);
+      box-shadow: 0 0 0 3px rgba(189, 8, 8, .13);
+    }
+    .ayuda { margin: 10px 0 0; color: var(--gris); font-size: .92rem; }
+    #resultado { margin-top: 24px; }
+    .mensaje, .persona { padding: 18px; border: 1px solid var(--borde); border-radius: 4px; }
+    .mensaje { color: var(--gris); background: #fffafa; }
+    .persona {
+      margin-bottom: 12px;
+      background: #fffafa;
+      border-left: 6px solid var(--rojo-salesiano);
+    }
+    .nombre { margin: 0 0 8px; color: var(--negro); font-size: 1.15rem; }
+    .dato { margin: 5px 0; color: #4c4c4c; }
+    .habitacion {
+      margin: 14px 0 0;
+      color: var(--rojo-profundo);
+      font-size: 1.13rem;
+      font-weight: 800;
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding: 17px 28px;
+      border-top: 1px solid var(--borde);
+      color: var(--rojo-salesiano);
+      font-size: .78rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .marca { white-space: nowrap; }
+    @media (max-width: 520px) {
+      header { min-height: 210px; padding: 24px 20px; }
+      .contenido { padding: 24px 20px; }
+      footer { padding: 15px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="pretitulo">Salesianos Don Bosco Chile · Red de Colegios Salesianos</p>
+      <h1>Jornada de<br><span>Rectores</span></h1>
+      <p class="anio">2026</p>
+    </header>
+
+    <section class="contenido" aria-label="Buscador de habitaciones">
+      <label for="busqueda">Escribe tu nombre o apellido</label>
+      <input id="busqueda" type="search" autocomplete="name" placeholder="Ej.: Freddy Araya" aria-describedby="ayuda">
+      <p id="ayuda" class="ayuda">Puedes escribir una parte del nombre. La búsqueda no distingue tildes ni mayúsculas.</p>
+      <div id="resultado" aria-live="polite">
+        <div class="mensaje">Ingresa tu nombre para consultar tu pabellón y habitación.</div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Consulta de habitaciones</span>
+      <span class="marca">Jornada de Rectores 2026</span>
+    </footer>
+  </main>
+
+  <script>
+    const personas = [
+      { nombre: 'Nataly Araya Baquedano', cep: 'Escuela Agrícola Salesiana Fundación Huidobro Catemu', pabellon: 'B', habitacion: '7' },
+      { nombre: 'Daniela Navarro Olivos', cep: 'Colegio Salesiano Valparaíso', pabellon: 'B', habitacion: '8' },
+      { nombre: 'Carolina Alfaro Palma', cep: 'Colegio Oratorio Don Bosco Santiago', pabellon: 'B', habitacion: '9' },
+      { nombre: 'Walter Oyarce Guerrero', cep: 'Colegio Salesianos Alameda', pabellon: 'B', habitacion: '10' },
+      { nombre: 'Luis Alvarado Soto', cep: 'Colegio Salesiano el Patrocinio de San José Providencia', pabellon: 'B', habitacion: '11' },
+      { nombre: 'Juan Pablo Arriagada Tarifeño', cep: 'Escuela Particular Parroquial Domingo Savio San Ramón', pabellon: 'B', habitacion: '12' },
+      { nombre: 'Padre David Rivera M.', cep: 'EIPJ', pabellon: 'C', habitacion: '1' },
+      { nombre: 'Hrno José Luis Jiménez', cep: 'ESA', pabellon: 'C', habitacion: '2' },
+      { nombre: 'Karin Cañón Moreno', cep: 'Departamento de Educación EIPJ', pabellon: 'C', habitacion: '3' },
+      { nombre: 'Johnny Ascencio Arce', cep: 'Colegio Técnico Industrial Don Bosco Calama', pabellon: 'C', habitacion: '4' },
+      { nombre: 'Carlos Araya Bravo', cep: 'Escuela Industrial Salesianos Copiapó', pabellon: 'C', habitacion: '5' },
+      { nombre: 'Héctor Ramírez Araya', cep: 'Colegio Técnico Industrial Don Bosco Antofagasta', pabellon: 'C', habitacion: '6' },
+      { nombre: 'Leonardo Moraga Contreras', cep: 'Colegio Salesiano Santo Domingo Savio Alto Hospicio', pabellon: 'C', habitacion: '7' },
+      { nombre: 'Cristina Campos Puelpan', cep: 'Departamento de Educación EIPJ', pabellon: 'C', habitacion: '8' },
+      { nombre: 'Fernanda Valdés Varela', cep: 'Escuela Industrial Salesiana San Ramón La Serena', pabellon: 'C', habitacion: '9' },
+      { nombre: 'Judith Álvarez Echeverría', cep: 'Instituto Don Bosco Pta. Arenas', pabellon: 'C', habitacion: '10' },
+      { nombre: 'Manuel Catalán Briones', cep: 'Departamento de Educación EIPJ', pabellon: 'C', habitacion: '11' },
+      { nombre: 'Freddy Araya Dominguez', cep: 'Departamento de Educación EIPJ', pabellon: 'C', habitacion: '12' },
+      { nombre: 'Cecilia Figueroa Farías', cep: 'Liceo Camilo Ortúzar Montt Macul', pabellon: 'D', habitacion: '1' },
+      { nombre: 'Marcela Yáñez Mendoza', cep: 'Liceo Manuel Arriarán Barros La Cisterna', pabellon: 'D', habitacion: '2' },
+      { nombre: 'Reinaldo Castro Castro', cep: 'Centro Educativo Salesianos Talca', pabellon: 'D', habitacion: '3' },
+      { nombre: 'Carmen Gloria Hidalgo Alegría', cep: 'Escuela Agrícola Salesiana Linares', pabellon: 'D', habitacion: '4' },
+      { nombre: 'Ida Sepúlveda Flores', cep: 'Colegio Salesiano de Concepción', pabellon: 'D', habitacion: '5' },
+      { nombre: 'Francisco J. Guajardo Medina', cep: 'Instituto Salesiano Valdivia', pabellon: 'D', habitacion: '6' },
+      { nombre: 'Leonard García Pacheco', cep: 'Colegio Salesiano Puerto Montt', pabellon: 'D', habitacion: '7' },
+      { nombre: 'Rosa Carcamo Dimitropulos', cep: 'Liceo San José Pta. Arenas', pabellon: 'D', habitacion: '8' },
+      { nombre: 'Johanna Gómez Torres', cep: 'Centro Laura Vicuña', pabellon: 'D', habitacion: 'D', habitacion: '9' },
+      { nombre: 'Alex Contreras Núñez', cep: 'Liceo Polivalente Monseñor Fagnano Pto. Natales', pabellon: 'D', habitacion: '10' },
+      { nombre: 'Alejandra Carrera Yentzen', cep: 'Colegio Don Bosco Iquique', pabellon: 'D', habitacion: '11' },
+      { nombre: 'Leonardo Castañeda Bustos', cep: 'Departamento de Educación EIPJ', pabellon: 'D', habitacion: '12' }
+    ];
+
+    const normalizar = texto => texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    const entrada = document.getElementById('busqueda');
+    const resultado = document.getElementById('resultado');
+    const escaparHTML = texto => texto.replace(/[&<>'"]/g, caracter => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[caracter]));
+
+    function buscar() {
+      const consulta = normalizar(entrada.value);
+      if (!consulta) {
+        resultado.innerHTML = '<div class="mensaje">Ingresa tu nombre para consultar tu pabellón y habitación.</div>';
+        return;
+      }
+      const coincidencias = personas.filter(persona => normalizar(persona.nombre).includes(consulta));
+      if (!coincidencias.length) {
+        resultado.innerHTML = '<div class="mensaje">No encontramos una coincidencia. Prueba con tu nombre o un apellido.</div>';
+        return;
+      }
+      resultado.innerHTML = coincidencias.map(persona => `
+        <article class="persona">
+          <h2 class="nombre">${escaparHTML(persona.nombre)}</h2>
+          <p class="dato">${escaparHTML(persona.cep)}</p>
+          <p class="habitacion">Pabellón ${escaparHTML(persona.pabellon)} · Habitación ${escaparHTML(persona.habitacion)}</p>
+        </article>
+      `).join('');
+    }
+
+    entrada.addEventListener('input', buscar);
+  </script>
+</body>
+</html>
