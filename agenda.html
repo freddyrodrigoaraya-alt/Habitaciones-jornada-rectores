@@ -5,232 +5,251 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Programa | Jornada de Rectores 2026</title>
-
   <style>
     :root {
       --burdeo: #7f1d2d;
       --rojo: #d9363e;
+      --rojo-suave: #fff0f1;
       --azul: #1c7aa8;
       --verde: #177a58;
       --naranja: #cc7517;
       --gris-900: #24262a;
       --gris-700: #525861;
       --gris-300: #d8dadd;
-      --fondo: #f4f5f6;
       --blanco: #ffffff;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      color: var(--gris-900);
-      background: var(--fondo);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .contenedor {
-      width: min(100% - 32px, 900px);
-      margin: 0 auto;
-    }
-
-    header {
-      color: var(--blanco);
-      background: var(--burdeo);
-      border-bottom: 7px solid var(--rojo);
-      padding: 30px 0 27px;
-    }
-
-    .marca {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 16px;
-      color: #ffe4e5;
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .marca::before {
-      content: "";
-      width: 10px;
-      height: 28px;
-      background: var(--rojo);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 8vw, 3.8rem);
-      line-height: .96;
-      letter-spacing: -.045em;
-      text-transform: uppercase;
-    }
-
-    .subtitulo {
-      margin: 12px 0 0;
-      color: #ffe9ea;
-      font-size: clamp(1rem, 3.5vw, 1.25rem);
-    }
-
-    main {
-      padding: 24px 0 44px;
-    }
-
-    .bloque {
-      margin-bottom: 24px;
-      padding: 22px;
-      background: var(--blanco);
-      border: 1px solid var(--gris-300);
-      box-shadow: 0 6px 16px rgba(45, 31, 35, .06);
-    }
-
-    .bloque h2 {
-      margin: 0 0 14px;
-      color: var(--burdeo);
-      font-size: clamp(1.3rem, 5vw, 1.75rem);
-    }
-
-    .introduccion {
-      border-top: 6px solid var(--rojo);
-    }
-
-    .introduccion p {
-      margin: 0;
-      color: var(--gris-700);
-      line-height: 1.5;
-    }
-
-    .objetivos {
-      border-left: 6px solid var(--burdeo);
-    }
-
-    .objetivos ol {
-      margin: 0;
-      padding-left: 22px;
-    }
-
-    .objetivos li {
-      margin: 0 0 13px;
-      color: var(--gris-700);
-      line-height: 1.5;
-    }
-
-    .objetivos li:last-child {
-      margin-bottom: 0;
-    }
-
-    .leyenda {
-      margin: 0 0 16px;
-      color: var(--gris-700);
-      font-size: .92rem;
-      line-height: 1.45;
-    }
-
-    .actividad {
-      display: grid;
-      grid-template-columns: 76px 1fr;
-      gap: 14px;
-      padding: 15px 0;
-      border-top: 1px solid var(--gris-300);
-    }
-
-    .hora {
-      color: var(--burdeo);
-      font-weight: 800;
-    }
-
-    .actividad h3 {
-      margin: 0;
-      font-size: 1.04rem;
-      line-height: 1.25;
-    }
-
-    .actividad p {
-      margin: 5px 0 0;
-      color: var(--gris-700);
-      font-size: .93rem;
-      line-height: 1.4;
-    }
-
-    .tipo {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 4px 7px;
-      border-radius: 2px;
-      color: var(--blanco);
-      font-size: .7rem;
-      font-weight: 800;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .oracion,
-    .celebracion {
-      background: var(--burdeo);
-    }
-
-    .trabajo,
-    .diferenciada {
-      background: var(--azul);
-    }
-
-    .plenario {
-      background: var(--verde);
-    }
-
-    .pausa,
-    .comida {
-      background: var(--naranja);
-    }
-
-    .cierre {
-      background: var(--gris-700);
-    }
-
-    .aviso {
-      border-left: 6px solid var(--rojo);
-    }
-
-    .aviso p {
-      margin: 0;
-      color: var(--gris-700);
-      line-height: 1.5;
-    }
-
-    footer {
-      padding: 0 16px 30px;
-      color: var(--gris-700);
-      font-size: .8rem;
-      text-align: center;
-    }
-
-    @media (max-width: 440px) {
-      .contenedor {
-        width: min(100% - 24px, 900px);
-      }
-
-      header {
-        padding: 26px 0 23px;
-      }
-
-      .bloque {
-        padding: 18px;
-      }
-
-      .actividad {
-        grid-template-columns: 65px 1fr;
-        gap: 10px;
-      }
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; color: var(--gris-900); background: #f4f5f6; font-family: Arial, Helvetica, sans-serif; }
+    .contenedor { width: min(100% - 32px, 900px); margin: 0 auto; }
+    header { color: var(--blanco); background: var(--burdeo); border-bottom: 7px solid var(--rojo); padding: 30px 0 27px; }
+    .marca { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; color: #ffe4e5; font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .marca::before { content: ''; width: 10px; height: 28px; display: inline-block; background: var(--rojo); }
+    h1 { margin: 0; font-size: clamp(2rem, 8vw, 3.8rem); line-height: .96; letter-spacing: -.045em; text-transform: uppercase; }
+    .subtitulo { margin: 12px 0 0; font-size: clamp(1rem, 3.5vw, 1.25rem); color: #ffe9ea; }
+    main { padding: 24px 0 44px; }
+    .ahora { padding: 22px; background: var(--blanco); border: 1px solid var(--gris-300); border-top: 6px solid var(--rojo); box-shadow: 0 7px 20px rgba(45, 31, 35, .08); }
+    .etiqueta { margin: 0 0 7px; color: var(--burdeo); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .estado-titulo { margin: 0; font-size: clamp(1.35rem, 5vw, 2rem); line-height: 1.1; }
+    .estado-hora { margin: 9px 0 0; color: var(--gris-700); font-size: 1.03rem; font-weight: 700; }
+    .estado-descripcion { margin: 10px 0 0; color: var(--gris-700); line-height: 1.45; }
+    .proxima { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--gris-300); color: var(--gris-700); }
+    .proxima strong { color: var(--gris-900); }
+    .nota-fecha { margin: 14px 0 0; color: var(--gris-700); font-size: .87rem; line-height: 1.4; }
+    .objetivos { margin: 26px 0 0; padding: 20px 22px; background: var(--blanco); border: 1px solid var(--gris-300); border-left: 6px solid var(--burdeo); }
+    .objetivos h2 { margin: 0 0 13px; color: var(--burdeo); font-size: 1.2rem; }
+    .objetivos ol { margin: 0; padding-left: 22px; }
+    .objetivos li { margin: 0 0 12px; color: var(--gris-700); line-height: 1.48; }
+    .objetivos li:last-child { margin-bottom: 0; }
+    .controles { display: flex; flex-wrap: wrap; gap: 9px; margin: 28px 0 20px; }
+    button { appearance: none; border: 1px solid var(--burdeo); border-radius: 3px; padding: 11px 16px; color: var(--burdeo); background: var(--blanco); cursor: pointer; font: inherit; font-weight: 800; }
+    button:hover, button:focus-visible { outline: 3px solid rgba(217, 54, 62, .22); outline-offset: 2px; }
+    button.activo { color: var(--blanco); background: var(--burdeo); }
+    .dia { display: none; }
+    .dia.activo { display: block; }
+    .encabezado-dia { margin: 0 0 15px; color: var(--burdeo); font-size: clamp(1.25rem, 5vw, 1.75rem); }
+    .itinerario { margin: 0; padding: 0; list-style: none; }
+    .actividad { display: grid; grid-template-columns: 76px 1fr; gap: 14px; position: relative; padding: 15px 0; border-bottom: 1px solid var(--gris-300); }
+    .actividad:last-child { border-bottom: 0; }
+    .actividad.en-curso { margin: 0 -14px; padding: 16px 14px; border: 2px solid var(--rojo); background: var(--rojo-suave); }
+    .hora { color: var(--burdeo); font-size: 1rem; font-weight: 800; }
+    .nombre { margin: 0; font-size: 1.05rem; line-height: 1.2; }
+    .detalle { margin: 5px 0 0; color: var(--gris-700); font-size: .92rem; line-height: 1.35; }
+    .tipo { display: inline-block; margin-top: 8px; padding: 4px 7px; border-radius: 2px; color: var(--blanco); font-size: .72rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .tipo.oracion, .tipo.celebracion { background: var(--burdeo); }
+    .tipo.trabajo, .tipo.diferenciada { background: var(--azul); }
+    .tipo.plenario { background: var(--verde); }
+    .tipo.pausa, .tipo.comida { background: var(--naranja); }
+    .tipo.cierre { background: var(--gris-700); }
+    .aviso { margin-top: 28px; padding: 16px 18px; color: var(--gris-700); background: var(--blanco); border-left: 5px solid var(--rojo); font-size: .92rem; line-height: 1.45; }
+    footer { padding: 22px 0 30px; color: var(--gris-700); font-size: .8rem; text-align: center; }
+    @media (max-width: 440px) { .contenedor { width: min(100% - 24px, 900px); } header { padding: 26px 0 23px; } .ahora { padding: 19px; } .actividad { grid-template-columns: 65px 1fr; gap: 10px; } }
   </style>
 </head>
-
 <body>
   <header>
     <div class="contenedor">
-      <p class="marca">Red de Colegios Salesianos</p>
-      <h1>Jornada de<br>Rectores
+      <div class="marca">Red de Colegios Salesianos</div>
+      <h1>Jornada de<br>Rectores 2026</h1>
+      <p class="subtitulo">Programa general actualizado · 24 y 25 de septiembre</p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="ahora" aria-live="polite" aria-label="Actividad actual">
+      <p class="etiqueta" id="etiqueta-estado">En la jornada</p>
+      <h2 class="estado-titulo" id="estado-titulo">Consulta el programa</h2>
+      <p class="estado-hora" id="estado-hora">Selecciona un día para revisar las actividades.</p>
+      <p class="estado-descripcion" id="estado-descripcion">La agenda se actualizará según la hora local de tu dispositivo durante los días de la jornada.</p>
+      <p class="proxima" id="proxima" hidden></p>
+      <p class="nota-fecha" id="nota-fecha"></p>
+    </section>
+
+    <section class="objetivos" aria-labelledby="titulo-objetivos">
+      <h2 id="titulo-objetivos">Objetivos de la jornada</h2>
+      <ol>
+        <li>Favorecer la vinculación y el diálogo entre los rectores de la red, a través de un compartir fraterno en clima oratoriano, fortaleciendo el sentido de pertenencia y la confianza mutua como comunidad educativo-pastoral salesiana.</li>
+        <li>Generar una reflexión conjunta y una proyección estratégica en red frente a la disminución de matrícula y la rotación docente, mediante la aplicación de un modelo de análisis de datos que permita leer la realidad de cada colegio a la luz de la información de la red y del contexto país.</li>
+      </ol>
+    </section>
+
+    <nav class="controles" aria-label="Seleccionar día del programa">
+      <button type="button" class="activo" data-dia="dia1" aria-pressed="true">Día 1 · Jueves 24</button>
+      <button type="button" data-dia="dia2" aria-pressed="false">Día 2 · Viernes 25</button>
+    </nav>
+
+    <section class="dia activo" id="dia1" aria-label="Programa Día 1">
+      <h2 class="encabezado-dia">Día 1 · Ver la realidad</h2>
+      <ol class="itinerario" id="lista-dia1"></ol>
+    </section>
+
+    <section class="dia" id="dia2" aria-label="Programa Día 2">
+      <h2 class="encabezado-dia">Día 2 · Construir</h2>
+      <ol class="itinerario" id="lista-dia2"></ol>
+    </section>
+
+    <aside class="aviso">
+      Este es el programa general actualizado de la Jornada de Rectores. La actividad FIRA de las 10:30 del Día 2 se encuentra en definición respecto de la participación de los establecimientos no TP; se comunicarán oportunamente las indicaciones correspondientes.
+    </aside>
+  </main>
+
+  <footer>Inspectoría Salesiana San Gabriel Arcángel · Departamento de Educación</footer>
+
+  <script>
+    const agenda = [
+      {
+        id: 'dia1', fecha: '2026-09-24', titulo: 'Día 1 · Ver la realidad',
+        actividades: [
+          { inicio: '08:00', fin: '08:30', nombre: 'Acogida', tipo: 'pausa', detalle: 'Recepción y firma de asistencia.' },
+          { inicio: '08:30', fin: '09:00', nombre: 'Oración de apertura', tipo: 'oracion', detalle: 'Buenos días salesianos y apertura de la jornada.' },
+          { inicio: '09:00', fin: '09:30', nombre: 'Desayuno', tipo: 'comida', detalle: 'Espacio de desayuno.' },
+          { inicio: '09:30', fin: '09:50', nombre: 'Palabras de bienvenida y encuadre', tipo: 'trabajo', detalle: 'Sentido de los dos días, productos esperados y reglas de trabajo.' },
+          { inicio: '09:50', fin: '10:05', nombre: 'Modelo de análisis de datos', tipo: 'trabajo', detalle: 'Recordatorio del modelo de análisis de datos trabajado con APTUS.' },
+          { inicio: '10:05', fin: '10:35', nombre: 'Bloque 1 · Los números de la red', tipo: 'trabajo', detalle: 'Proyecciones de matrícula, escasez docente y reemplazo de equipos directivos.' },
+          { inicio: '10:35', fin: '11:20', nombre: 'Bloque 2-A · Mi CEP en el 2035', tipo: 'trabajo', detalle: 'Trabajo individual: contraste de la planilla del colegio con los datos de la red y del país; identificación de proyecciones y nudos críticos.' },
+          { inicio: '11:20', fin: '11:50', nombre: 'Café', tipo: 'pausa', detalle: 'Pausa de la mañana.' },
+          { inicio: '11:50', fin: '12:30', nombre: 'Bloque 2-B · Mi CEP en el 2035', tipo: 'trabajo', detalle: 'Trabajo por mesas zonales: contraste de los datos de las CEP a partir de las cuatro dimensiones.' },
+          { inicio: '12:30', fin: '13:30', nombre: 'Plenario', tipo: 'plenario', detalle: 'Puesta en común del trabajo por mesas.' },
+          { inicio: '13:30', fin: '15:15', nombre: 'Almuerzo', tipo: 'comida', detalle: 'Espacio de almuerzo.' },
+          { inicio: '15:15', fin: '16:45', nombre: 'Bloque 3 · Lo que está pasando en América', tipo: 'trabajo', detalle: 'Perspectiva continental, eclesial y salesiana para leer los desafíos actuales.' },
+          { inicio: '16:45', fin: '17:15', nombre: 'Café', tipo: 'pausa', detalle: 'Pausa de la tarde.' },
+          { inicio: '17:15', fin: '18:15', nombre: 'Bloque 4 · La identidad salesiana', tipo: 'trabajo', detalle: 'Lo irrenunciable en las CEP y una acción concreta para cuidar la identidad.' },
+          { inicio: '18:15', fin: '19:00', nombre: 'Plenario · Acciones de identidad', tipo: 'plenario', detalle: 'Puesta en común de las acciones preparadas por las mesas.' },
+          { inicio: '19:00', fin: '20:00', nombre: 'Eucaristía', tipo: 'celebracion', detalle: 'Celebración eucarística.' },
+          { inicio: '20:00', fin: '21:00', nombre: 'Cena', tipo: 'comida', detalle: 'Espacio de cena.' },
+          { inicio: '21:00', fin: '21:30', nombre: 'Buenas noches salesianas', tipo: 'cierre', detalle: 'Momento carismático a cargo del Hno. José Luis Jiménez.' },
+          { inicio: '21:30', fin: '23:00', nombre: 'Compartir fraterno', tipo: 'pausa', detalle: 'Espacio de encuentro fraterno.' }
+        ]
+      },
+      {
+        id: 'dia2', fecha: '2026-09-25', titulo: 'Día 2 · Construir',
+        actividades: [
+          { inicio: '08:00', fin: '08:20', nombre: 'Oración de la mañana', tipo: 'oracion', detalle: 'Oración sobre el discernimiento y la decisión.' },
+          { inicio: '08:20', fin: '08:50', nombre: 'Desayuno', tipo: 'comida', detalle: 'Espacio de desayuno.' },
+          { inicio: '08:50', fin: '10:30', nombre: 'Taller 1 · De las tensiones a los desafíos', tipo: 'trabajo', detalle: 'Trabajo individual y por mesas: convertir tensiones en desafíos, proponer estrategias y priorizar dos por mesa.' },
+          { inicio: '10:30', fin: '11:30', nombre: 'FIRA · actividad diferenciada', tipo: 'diferenciada', detalle: 'Actividad FIRA para establecimientos TP. La participación o alternativa para los demás establecimientos está en definición.' },
+          { inicio: '11:30', fin: '12:00', nombre: 'Café', tipo: 'pausa', detalle: 'Pausa de la mañana.' },
+          { inicio: '12:00', fin: '12:30', nombre: 'Cierre y evaluación · La ruta de aquí en adelante', tipo: 'trabajo', detalle: 'Síntesis de desafíos e indicaciones para la continuidad del trabajo y el plan estratégico.' },
+          { inicio: '12:30', fin: '13:00', nombre: 'Palabras de cierre', tipo: 'cierre', detalle: 'Percepción del trabajo realizado, proyecciones y mensaje carismático.' },
+          { inicio: '13:00', fin: '14:00', nombre: 'Eucaristía de cierre', tipo: 'celebracion', detalle: 'Celebración eucarística de cierre.' },
+          { inicio: '14:00', fin: '15:30', nombre: 'Almuerzo de despedida', tipo: 'comida', detalle: 'Almuerzo y cierre de la jornada.' }
+        ]
+      }
+    ];
+
+    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const $ = selector => document.querySelector(selector);
+    const fechaAHora = (fecha, hora) => new Date(`${fecha}T${hora}:00-03:00`);
+    const formatoRango = actividad => `${actividad.inicio}–${actividad.fin}`;
+
+    function etiquetaTipo(tipo) {
+      return ({ oracion: 'Oración', celebracion: 'Celebración', trabajo: 'Trabajo', plenario: 'Plenario', pausa: 'Pausa', comida: 'Alimentación', cierre: 'Cierre', diferenciada: 'Actividad diferenciada' })[tipo] || tipo;
+    }
+
+    function crearLista(dia) {
+      const lista = $(`#lista-${dia.id}`);
+      lista.innerHTML = dia.actividades.map(actividad => `
+        <li class="actividad" data-fecha="${dia.fecha}" data-inicio="${actividad.inicio}" data-fin="${actividad.fin}">
+          <time class="hora">${formatoRango(actividad)}</time>
+          <div>
+            <h3 class="nombre">${actividad.nombre}</h3>
+            <p class="detalle">${actividad.detalle}</p>
+            <span class="tipo ${actividad.tipo}">${etiquetaTipo(actividad.tipo)}</span>
+          </div>
+        </li>
+      `).join('');
+    }
+
+    function seleccionarDia(id) {
+      document.querySelectorAll('.dia').forEach(seccion => seccion.classList.toggle('activo', seccion.id === id));
+      document.querySelectorAll('[data-dia]').forEach(boton => {
+        const activo = boton.dataset.dia === id;
+        boton.classList.toggle('activo', activo);
+        boton.setAttribute('aria-pressed', activo);
+      });
+    }
+
+    function actualizarEstado() {
+      const ahora = new Date();
+      const fechaLocal = `${ahora.getFullYear()}-${String(ahora.getMonth() + 1).padStart(2, '0')}-${String(ahora.getDate()).padStart(2, '0')}`;
+      const dia = agenda.find(item => item.fecha === fechaLocal);
+      const etiqueta = $('#etiqueta-estado');
+      const titulo = $('#estado-titulo');
+      const hora = $('#estado-hora');
+      const descripcion = $('#estado-descripcion');
+      const proxima = $('#proxima');
+      const nota = $('#nota-fecha');
+      document.querySelectorAll('.actividad.en-curso').forEach(item => item.classList.remove('en-curso'));
+
+      if (!dia) {
+        etiqueta.textContent = 'Programa general actualizado';
+        titulo.textContent = 'Consulta el programa de la jornada';
+        hora.textContent = 'Jueves 24 y viernes 25 de septiembre de 2026';
+        descripcion.textContent = 'Selecciona Día 1 o Día 2 para revisar todas las actividades y sus horarios.';
+        proxima.hidden = true;
+        nota.textContent = '';
+        return;
+      }
+
+      const actividadActual = dia.actividades.find(item => ahora >= fechaAHora(dia.fecha, item.inicio) && ahora < fechaAHora(dia.fecha, item.fin));
+      const proximaActividad = dia.actividades.find(item => ahora < fechaAHora(dia.fecha, item.inicio));
+      const fechaLegible = `${ahora.getDate()} de ${meses[ahora.getMonth()]}`;
+
+      if (actividadActual) {
+        etiqueta.textContent = 'Ahora en la jornada';
+        titulo.textContent = actividadActual.nombre;
+        hora.textContent = formatoRango(actividadActual);
+        descripcion.textContent = actividadActual.detalle;
+        const elemento = document.querySelector(`.actividad[data-fecha="${dia.fecha}"][data-inicio="${actividadActual.inicio}"]`);
+        if (elemento) elemento.classList.add('en-curso');
+        seleccionarDia(dia.id);
+      } else if (proximaActividad) {
+        etiqueta.textContent = 'Próxima actividad';
+        titulo.textContent = proximaActividad.nombre;
+        hora.textContent = `${proximaActividad.inicio} · ${dia.titulo}`;
+        descripcion.textContent = proximaActividad.detalle;
+        seleccionarDia(dia.id);
+      } else {
+        etiqueta.textContent = 'Jornada finalizada';
+        titulo.textContent = 'Gracias por participar';
+        hora.textContent = dia.titulo;
+        descripcion.textContent = 'Revisa el programa para retomar acuerdos y compromisos del trabajo realizado.';
+        seleccionarDia(dia.id);
+      }
+
+      if (proximaActividad && actividadActual) {
+        proxima.hidden = false;
+        proxima.innerHTML = `A continuación: <strong>${proximaActividad.nombre}</strong> · ${proximaActividad.inicio}`;
+      } else {
+        proxima.hidden = true;
+      }
+      nota.textContent = `Hora local del dispositivo · ${fechaLegible} de ${ahora.getFullYear()}.`;
+    }
+
+    agenda.forEach(crearLista);
+    document.querySelectorAll('[data-dia]').forEach(boton => boton.addEventListener('click', () => seleccionarDia(boton.dataset.dia)));
+    actualizarEstado();
+    setInterval(actualizarEstado, 30000);
+  </script>
+</body>
+</html>
