@@ -10,13 +10,13 @@
     :root {
       --burdeo: #7f1d2d;
       --rojo: #d9363e;
-      --rojo-suave: #fff0f1;
       --azul: #1c7aa8;
       --verde: #177a58;
       --naranja: #cc7517;
       --gris-900: #24262a;
       --gris-700: #525861;
       --gris-300: #d8dadd;
+      --fondo: #f4f5f6;
       --blanco: #ffffff;
     }
 
@@ -24,15 +24,10 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      min-height: 100vh;
       color: var(--gris-900);
-      background: #f4f5f6;
+      background: var(--fondo);
       font-family: Arial, Helvetica, sans-serif;
     }
 
@@ -52,7 +47,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 16px;
+      margin: 0 0 16px;
       color: #ffe4e5;
       font-size: .8rem;
       font-weight: 800;
@@ -64,7 +59,6 @@
       content: "";
       width: 10px;
       height: 28px;
-      display: inline-block;
       background: var(--rojo);
     }
 
@@ -78,80 +72,40 @@
 
     .subtitulo {
       margin: 12px 0 0;
-      font-size: clamp(1rem, 3.5vw, 1.25rem);
       color: #ffe9ea;
+      font-size: clamp(1rem, 3.5vw, 1.25rem);
     }
 
     main {
       padding: 24px 0 44px;
     }
 
-    .ahora {
+    .bloque {
+      margin-bottom: 24px;
       padding: 22px;
       background: var(--blanco);
       border: 1px solid var(--gris-300);
-      border-top: 6px solid var(--rojo);
-      box-shadow: 0 7px 20px rgba(45, 31, 35, .08);
+      box-shadow: 0 6px 16px rgba(45, 31, 35, .06);
     }
 
-    .etiqueta {
-      margin: 0 0 7px;
+    .bloque h2 {
+      margin: 0 0 14px;
       color: var(--burdeo);
-      font-size: .78rem;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      font-size: clamp(1.3rem, 5vw, 1.75rem);
     }
 
-    .estado-titulo {
+    .introduccion {
+      border-top: 6px solid var(--rojo);
+    }
+
+    .introduccion p {
       margin: 0;
-      font-size: clamp(1.35rem, 5vw, 2rem);
-      line-height: 1.1;
-    }
-
-    .estado-hora {
-      margin: 9px 0 0;
       color: var(--gris-700);
-      font-size: 1.03rem;
-      font-weight: 700;
-    }
-
-    .estado-descripcion {
-      margin: 10px 0 0;
-      color: var(--gris-700);
-      line-height: 1.45;
-    }
-
-    .proxima {
-      margin: 18px 0 0;
-      padding-top: 16px;
-      border-top: 1px solid var(--gris-300);
-      color: var(--gris-700);
-    }
-
-    .proxima strong {
-      color: var(--gris-900);
-    }
-
-    .nota-fecha {
-      margin: 14px 0 0;
-      color: var(--gris-700);
-      font-size: .87rem;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .objetivos {
-      margin: 26px 0 0;
-      padding: 20px 22px;
-      background: var(--blanco);
-      border: 1px solid var(--gris-300);
       border-left: 6px solid var(--burdeo);
-    }
-
-    .objetivos h2 {
-      margin: 0 0 13px;
-      color: var(--burdeo);
-      font-size: 1.2rem;
     }
 
     .objetivos ol {
@@ -160,78 +114,123 @@
     }
 
     .objetivos li {
-      margin: 0 0 12px;
+      margin: 0 0 13px;
       color: var(--gris-700);
-      line-height: 1.48;
+      line-height: 1.5;
     }
 
     .objetivos li:last-child {
       margin-bottom: 0;
     }
 
-    .controles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin: 28px 0 20px;
-    }
-
-    button {
-      appearance: none;
-      border: 1px solid var(--burdeo);
-      border-radius: 3px;
-      padding: 11px 16px;
-      color: var(--burdeo);
-      background: var(--blanco);
-      cursor: pointer;
-      font: inherit;
-      font-weight: 800;
-    }
-
-    button:hover,
-    button:focus-visible {
-      outline: 3px solid rgba(217, 54, 62, .22);
-      outline-offset: 2px;
-    }
-
-    button.activo {
-      color: var(--blanco);
-      background: var(--burdeo);
-    }
-
-    .dia {
-      display: none;
-    }
-
-    .dia.activo {
-      display: block;
-    }
-
-    .encabezado-dia {
-      margin: 0 0 15px;
-      color: var(--burdeo);
-      font-size: clamp(1.25rem, 5vw, 1.75rem);
-    }
-
-    .itinerario {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    .leyenda {
+      margin: 0 0 16px;
+      color: var(--gris-700);
+      font-size: .92rem;
+      line-height: 1.45;
     }
 
     .actividad {
       display: grid;
       grid-template-columns: 76px 1fr;
       gap: 14px;
-      position: relative;
       padding: 15px 0;
-      border-bottom: 1px solid var(--gris-300);
+      border-top: 1px solid var(--gris-300);
     }
 
-    .actividad:last-child {
-      border-bottom: 0;
+    .hora {
+      color: var(--burdeo);
+      font-weight: 800;
     }
 
-    .actividad.en-curso {
-      margin: 0 -14px;
-      padding: 16px
+    .actividad h3 {
+      margin: 0;
+      font-size: 1.04rem;
+      line-height: 1.25;
+    }
+
+    .actividad p {
+      margin: 5px 0 0;
+      color: var(--gris-700);
+      font-size: .93rem;
+      line-height: 1.4;
+    }
+
+    .tipo {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 7px;
+      border-radius: 2px;
+      color: var(--blanco);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .oracion,
+    .celebracion {
+      background: var(--burdeo);
+    }
+
+    .trabajo,
+    .diferenciada {
+      background: var(--azul);
+    }
+
+    .plenario {
+      background: var(--verde);
+    }
+
+    .pausa,
+    .comida {
+      background: var(--naranja);
+    }
+
+    .cierre {
+      background: var(--gris-700);
+    }
+
+    .aviso {
+      border-left: 6px solid var(--rojo);
+    }
+
+    .aviso p {
+      margin: 0;
+      color: var(--gris-700);
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 0 16px 30px;
+      color: var(--gris-700);
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    @media (max-width: 440px) {
+      .contenedor {
+        width: min(100% - 24px, 900px);
+      }
+
+      header {
+        padding: 26px 0 23px;
+      }
+
+      .bloque {
+        padding: 18px;
+      }
+
+      .actividad {
+        grid-template-columns: 65px 1fr;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="contenedor">
+      <p class="marca">Red de Colegios Salesianos</p>
+      <h1>Jornada de<br>Rectores
