@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Agenda | Jornada de Rectores 2026</title>
+  <style>
+    :root {
+      --burdeo: #7d2030;
+      --rojo: #d8393f;
+      --rojo-oscuro: #9d1724;
+      --tinta: #25272a;
+      --gris: #687078;
+      --linea: #dde1e5;
+      --fondo: #f5f6f7;
+      --blanco: #ffffff;
+      --sombra: 0 12px 28px rgba(50, 25, 29, .12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--tinta);
+      background: linear-gradient(145deg, #fff 0%, var(--fondo) 60%, #f6eeee 100%);
+    }
+    .contenedor { width: min(100% - 32px, 860px); margin: 0 auto; }
+    header {
+      color: var(--blanco);
+      background: var(--burdeo);
+      border-bottom: 7px solid var(--rojo);
+      padding: 30px 0 26px;
+    }
+    .marca {
+      margin: 0 0 8px;
+      color: #f9dfe2;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(2rem, 7vw, 3.5rem); letter-spacing: -.04em; line-height: .95; text-transform: uppercase; }
+    .fecha { margin: 12px 0 0; font-size: clamp(1rem, 3vw, 1.25rem); }
+    main { padding: 28px 0 46px; }
+    .estado {
+      background: var(--blanco);
+      border: 1px solid #efd5d8;
+      border-left: 7px solid var(--rojo);
+      border-radius: 5px;
+      box-shadow: var(--sombra);
+      padding: 22px;
+    }
+    .etiqueta { margin: 0 0 8px; color: var(--rojo-oscuro); font-size: .78rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    #titulo-ahora { margin: 0; color: var(--burdeo); font-size: clamp(1.25rem, 4vw, 1.65rem); }
+    #hora-ahora { margin: 7px 0 0; font-size: 1rem; font-weight: 700; }
+    #detalle-ahora { margin: 8px 0 0; color: #4e555c; line-height: 1.45; }
+    .siguiente { margin: 17px 0 0; padding-top: 15px; border-top: 1px solid var(--linea); color: var(--gris); font-size: .96rem; }
+    .siguiente strong { color: var(--tinta); }
+    .aviso-fecha { margin: 8px 0 0; color: #4e555c; line-height: 1.5; }
+    .pestanas { display: flex; gap: 10px; margin: 30px 0 18px; }
+    .pestana {
+      flex: 1;
+      padding: 13px 12px;
+      border: 1px solid #cfd4d9;
+      border-radius: 4px;
+      color: var(--burdeo);
+      background: var(--blanco);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+    }
+    .pestana[aria-selected="true"] { color: var(--blanco); border-color: var(--burdeo); background: var(--burdeo); }
+    .dia-info { margin: 0 0 16px; color: var(--gris); font-size: .98rem; }
+    .agenda { display: grid; gap: 12px; }
+    .actividad {
+      display: grid;
+      grid-template-columns: 102px 1fr;
+      gap: 16px;
+      padding: 17px;
+      border: 1px solid var(--linea);
+      border-radius: 5px;
+      background: var(--blanco);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .actividad.actual { border-color: var(--rojo); box-shadow: 0 0 0 3px rgba(216, 57, 63, .13); }
+    .actividad.actual .hora { color: var(--rojo-oscuro); }
+    .hora { padding-top: 2px; color: var(--burdeo); font-size: .98rem; font-weight: 800; }
+    .tipo { margin: 0 0 5px; color: var(--rojo); font-size: .73rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .actividad h3 { margin: 0; color: var(--tinta); font-size: 1.08rem; }
+    .descripcion { margin: 7px 0 0; color: #545b62; font-size: .95rem; line-height: 1.43; }
+    .insignia { display: inline-block; margin-left: 7px; padding: 3px 6px; color: var(--blanco); background: var(--rojo); border-radius: 3px; font-size: .68rem; font-weight: 800; letter-spacing: .06em; vertical-align: middle; }
+    footer { padding: 22px 0 32px; color: #70777e; font-size: .82rem; text-align: center; }
+    @media (max-width: 520px) {
+      .contenedor { width: min(100% - 24px, 860px); }
+      header { padding: 26px 0 22px; }
+      .estado { padding: 18px; }
+      .actividad { grid-template-columns: 80px 1fr; gap: 12px; padding: 15px 13px; }
+      .hora { font-size: .9rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor">
+      <p class="marca">Red de Colegios Salesianos</p>
+      <h1>Jornada de<br>Rectores 2026</h1>
+      <p class="fecha">24 y 25 de septiembre · Programa general</p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="estado" aria-live="polite" aria-label="Actividad actual">
+      <p class="etiqueta" id="etiqueta-ahora">Ahora en la jornada</p>
+      <h2 id="titulo-ahora">Revisando el programa</h2>
+      <p id="hora-ahora"></p>
+      <p id="detalle-ahora"></p>
+      <p class="siguiente" id="siguiente"></p>
+    </section>
+
+    <nav class="pestanas" aria-label="Seleccionar día de agenda">
+      <button class="pestana" id="boton-dia1" type="button" aria-selected="true">Día 1 · Jueves 24</button>
+      <button class="pestana" id="boton-dia2" type="button" aria-selected="false">Día 2 · Viernes 25</button>
+    </nav>
+
+    <p class="dia-info" id="dia-info"></p>
+    <section class="agenda" id="agenda" aria-label="Programa de la jornada"></section>
+  </main>
+
+  <footer class="contenedor">Jornada de Rectores 2026 · Inspectoría Salesiana San Gabriel Arcángel · Departamento de Educación</footer>
+
+  <script>
+    const agenda = {
+      dia1: {
+        fecha: 'Jueves 24 de septiembre',
+        lema: 'Reconocer e interpretar · Reconocer la realidad de mi CEP con datos e interpretarla a la luz de la red, la Iglesia y el carisma.',
+        eventos: [
+          { inicio: '08:00', fin: '08:30', tipo: 'Acogida', titulo: 'Acogida', descripcion: 'Recepción e inicio de la jornada.' },
+          { inicio: '08:30', fin: '09:00', tipo: 'Oración', titulo: 'Oración', descripcion: 'Momento inicial de oración. Trabajo asociado: “Lo que traigo”.' },
+          { inicio: '09:00', fin: '09:30', tipo: 'Alimentación', titulo: 'Desayuno', descripcion: 'Espacio de desayuno.' },
+          { inicio: '09:30', fin: '09:50', tipo: 'Encuadre', titulo: 'Bienvenida y encuadre', descripcion: 'Presentación de la jornada y trabajo asociado: “Lo que traigo”.' },
+          { inicio: '09:50', fin: '10:05', tipo: 'Modelo de análisis', titulo: 'Mapa de datos escolares', descripcion: 'Modelo de análisis institucional desde cuatro dimensiones: demográficos, aprendizajes, procesos y percepciones.' },
+          { inicio: '10:05', fin: '10:35', tipo: 'Bloque de trabajo', titulo: 'Bloque 1 · Los números de la red', descripcion: 'Lectura de datos agregados de la red y primeras resonancias.' },
+          { inicio: '10:35', fin: '11:00', tipo: 'Trabajo individual', titulo: 'Bloque 2-A · Mi CEP', descripcion: 'Lectura individual de los datos de la propia comunidad educativo-pastoral en las cuatro dimensiones.' },
+          { inicio: '11:00', fin: '11:30', tipo: 'Pausa', titulo: 'Café', descripcion: 'Pausa de café.' },
+          { inicio: '11:30', fin: '12:30', tipo: 'Trabajo por mesas', titulo: 'Bloque 2-B · Mi CEP', descripcion: 'Conectar datos, contrastar realidades y nombrar tensiones en la mesa de trabajo.' },
+          { inicio: '12:30', fin: '13:00', tipo: 'Plenario', titulo: 'Mapa de tensiones de la red', descripcion: 'Puesta en común de tensiones identificadas por las mesas.' },
+          { inicio: '13:00', fin: '15:15', tipo: 'Alimentación', titulo: 'Almuerzo', descripcion: 'Espacio de almuerzo.' },
+          { inicio: '15:15', fin: '16:45', tipo: 'Bloque de trabajo', titulo: 'Bloque 3 · Lo que está pasando en América', descripcion: 'Perspectiva continental, eclesial y salesiana ante los desafíos educativos actuales.' },
+          { inicio: '16:45', fin: '17:15', tipo: 'Pausa', titulo: 'Café', descripcion: 'Pausa de café.' },
+          { inicio: '17:15', fin: '18:15', tipo: 'Bloque de trabajo', titulo: 'Bloque 4 · La identidad salesiana', descripcion: 'Identificar lo irrenunciable de la identidad salesiana y definir una acción concreta.' },
+          { inicio: '18:15', fin: '19:00', tipo: 'Plenario', titulo: 'Acciones de identidad', descripcion: 'Socialización de acciones para cuidar la identidad salesiana.' },
+          { inicio: '19:00', fin: '20:00', tipo: 'Celebración', titulo: 'Eucaristía', descripcion: 'Celebración eucarística.' },
+          { inicio: '20:00', fin: '21:00', tipo: 'Alimentación', titulo: 'Cena fraterna', descripcion: 'Espacio de cena.' },
+          { inicio: '21:00', fin: '21:30', tipo: 'Cierre', titulo: 'Buenas noches salesianas', descripcion: 'Cierre del día: una palabra o imagen que cada participante se lleva.' },
+          { inicio: '21:30', fin: '23:30', tipo: 'Encuentro fraterno', titulo: 'Compartir fraterno', descripcion: 'Espacio de convivencia y encuentro.' }
+        ]
+      },
+      dia2: {
+        fecha: 'Viernes 25 de septiembre',
+        lema: 'Elegir · De las tensiones a los desafíos y las estrategias.',
+        eventos: [
+          { inicio: '08:00', fin: '08:30', tipo: 'Oración', titulo: 'Oración de la mañana', descripcion: 'Momento de discernimiento y decisión.' },
+          { inicio: '08:30', fin: '09:00', tipo: 'Alimentación', titulo: 'Desayuno', descripcion: 'Espacio de desayuno.' },
+          { inicio: '09:00', fin: '10:30', tipo: 'Taller', titulo: 'Taller 1 · De las tensiones a los desafíos', descripcion: 'Formulación de desafíos, apertura de estrategias y priorización de rutas de acción.' },
+          { inicio: '10:30', fin: '11:00', tipo: 'Plenario', titulo: 'Estrategias de la red', descripcion: 'Puesta en común de estrategias desarrolladas por las mesas.' },
+          { inicio: '11:00', fin: '11:30', tipo: 'Pausa', titulo: 'Café', descripcion: 'Pausa de café.' },
+          { inicio: '11:30', fin: '12:00', tipo: 'Cierre y evaluación', titulo: 'La ruta de aquí en adelante', descripcion: 'Construcción de la hoja de ruta para continuar el trabajo en cada colegio.' },
+          { inicio: '12:00', fin: '12:30', tipo: 'Cierre', titulo: 'Palabras de cierre', descripcion: 'Síntesis de la jornada y compromisos personales.' },
+          { inicio: '12:30', fin: '13:30', tipo: 'Celebración', titulo: 'Eucaristía', descripcion: 'Celebración eucarística de cierre.' },
+          { inicio: '13:30', fin: '15:00', tipo: 'Alimentación', titulo: 'Almuerzo', descripcion: 'Almuerzo y cierre de la jornada.' }
+        ]
+      }
+    };
+
+    const fechas = { dia1: { mes: 8, dia: 24 }, dia2: { mes: 8, dia: 25 } };
+    let diaActivo = 'dia1';
+
+    const aMinutos = hora => {
+      const [h, m] = hora.split(':').map(Number);
+      return h * 60 + m;
+    };
+
+    const actividadActual = () => {
+      const ahora = new Date();
+      const clave = ahora.getMonth() === 8 && ahora.getDate() === 24 ? 'dia1' : ahora.getMonth() === 8 && ahora.getDate() === 25 ? 'dia2' : null;
+      if (!clave) return null;
+      const minutos = ahora.getHours() * 60 + ahora.getMinutes();
+      const eventos = agenda[clave].eventos;
+      const indice = eventos.findIndex(evento => minutos >= aMinutos(evento.inicio) && minutos < aMinutos(evento.fin));
+      return { clave, indice, eventos, minutos };
+    };
+
+    function actualizarEstado() {
+      const actual = actividadActual();
+      const etiqueta = document.getElementById('etiqueta-ahora');
+      const titulo = document.getElementById('titulo-ahora');
+      const hora = document.getElementById('hora-ahora');
+      const detalle = document.getElementById('detalle-ahora');
+      const siguiente = document.getElementById('siguiente');
+
+      if (!actual) {
+        etiqueta.textContent = 'Programa general';
+        titulo.textContent = 'Revisa la agenda de la jornada';
+        hora.textContent = 'Jueves 24 y viernes 25 de septiembre de 2026';
+        detalle.textContent = 'Selecciona un día para revisar las actividades y sus horarios. Durante la jornada, esta sección indicará automáticamente la actividad en curso.';
+        siguiente.textContent = '';
+        return;
+      }
+
+      diaActivo = actual.clave;
+      const evento = actual.eventos[actual.indice];
+      if (evento) {
+        etiqueta.textContent = 'Ahora en la jornada';
+        titulo.textContent = evento.titulo;
+        hora.textContent = `${evento.inicio}–${evento.fin} · ${evento.tipo}`;
+        detalle.textContent = evento.descripcion;
+        const proximo = actual.eventos[actual.indice + 1];
+        siguiente.innerHTML = proximo ? `A continuación · <strong>${proximo.inicio} · ${proximo.titulo}</strong>` : 'La jornada programada ha finalizado.';
+      } else {
+        const proximo = actual.eventos.find(evento => aMinutos(evento.inicio) > actual.minutos);
+        etiqueta.textContent = 'Próxima actividad';
+        titulo.textContent = proximo ? proximo.titulo : 'La jornada programada ha finalizado';
+        hora.textContent = proximo ? `${proximo.inicio}–${proximo.fin} · ${proximo.tipo}` : '';
+        detalle.textContent = proximo ? proximo.descripcion : 'Puedes revisar la agenda completa de ambos días.';
+        siguiente.textContent = '';
+      }
+    }
+
+    function mostrarAgenda() {
+      const datos = agenda[diaActivo];
+      const actual = actividadActual();
+      document.getElementById('dia-info').textContent = `${datos.fecha} · ${datos.lema}`;
+      document.getElementById('boton-dia1').setAttribute('aria-selected', diaActivo === 'dia1');
+      document.getElementById('boton-dia2').setAttribute('aria-selected', diaActivo === 'dia2');
+      document.getElementById('agenda').innerHTML = datos.eventos.map((evento, indice) => {
+        const esActual = actual && actual.clave === diaActivo && actual.indice === indice;
+        return `<article class="actividad${esActual ? ' actual' : ''}">
+          <div class="hora">${evento.inicio}<br>– ${evento.fin}</div>
+          <div>
+            <p class="tipo">${evento.tipo}</p>
+            <h3>${evento.titulo}${esActual ? '<span class="insignia">AHORA</span>' : ''}</h3>
+            <p class="descripcion">${evento.descripcion}</p>
+          </div>
+        </article>`;
+      }).join('');
+    }
+
+    document.getElementById('boton-dia1').addEventListener('click', () => { diaActivo = 'dia1'; mostrarAgenda(); });
+    document.getElementById('boton-dia2').addEventListener('click', () => { diaActivo = 'dia2'; mostrarAgenda(); });
+
+    actualizarEstado();
+    mostrarAgenda();
+    setInterval(() => { actualizarEstado(); mostrarAgenda(); }, 60000);
+  </script>
+</body>
+</html>
